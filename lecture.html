@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <!-- Ajout de Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      /* Dégradé de fond */
+      body {
+        background: linear-gradient(to bottom, #a3c2f2, #f7f7f7); /* Dégradé bleu clair vers blanc */
+        color: #333;  /* Texte sombre pour un bon contraste */
+        padding-top: 80px; /* Espacement pour que le contenu ne soit pas caché sous la navbar fixe */
+      }
+
+      /* Fixer le menu en haut de la page */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Assurer que la navbar soit au-dessus du contenu */
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour donner un effet d'élévation */
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.8);  /* Fond semi-transparent pour le contenu */
+        padding: 30px;
+        border-radius: 10px;
+      }
+
+      #result {
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+
+      video {
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        width: 100%;  /* S'adapte à la largeur du conteneur */
+        max-width: 500px;  /* Limiter la taille de la vidéo */
+        height: auto;  /* Garde le ratio d'aspect */
+      }
+
+      /* Media queries pour les petits écrans */
+      @media (max-width: 768px) {
+        video {
+          width: 100%;
+          max-width: 100%; /* La vidéo occupe toute la largeur de l'écran sur petits écrans */
+        }
+      }
+    </style>
+</head>
+<body>
+  <!-- Navbar placée en haut et fixée -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navbar">
+    <div class="container">
+      <a class="navbar-brand fs-4 fw-bolder" href="#">QR Code</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="auth-links">
+          <li class="nav-item"><a class="nav-link" href="generer.html">Générer</a></li>
+          <li class="nav-item"><a class="nav-link" href="lecture.html">Lire QR Code</a></li>
+          <li class="nav-item"><a class="nav-link" href="historique.html">Gestion QR Code</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="accueil.html">Deconnexion</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenu principal sous la navbar -->
+  <div class="container">
+    <h1>Scanner de QR Code</h1>
+
+    <!-- Bouton pour activer la caméra -->
+    <button id="activateCameraButton" class="btn btn-primary">Activer la caméra pour scanner</button>
+    
+    <video id="video" autoplay hidden></video>
+    <canvas id="canvas" hidden></canvas>
+    <p id="result">Résultat : Aucun QR code détecté</p>
+
+    <!-- Ajout de l'input pour choisir une image -->
+    <input type="file" id="fileInput" accept="image/*" class="form-control mt-3">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const resultText = document.getElementById("result");
+    const fileInput = document.getElementById("fileInput");
+    const activateCameraButton = document.getElementById("activateCameraButton");
+
+    async function startCamera() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+            video.srcObject = stream;
+            video.setAttribute("playsinline", true);
+            video.hidden = false; // Afficher la vidéo
+            video.play();
+            requestAnimationFrame(scanQRCode);
+        } catch (error) {
+            console.error("Erreur lors de l'accès à la caméra :", error);
+            resultText.textContent = "Erreur lors de l'accès à la caméra";
+        }
+    }
+
+    function scanQRCode() {
+        if (video.readyState === video.HAVE_ENOUGH_DATA) {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+            if (code) {
+                resultText.textContent = `Résultat : ${code.data}`;
+                return;
+            }
+        }
+        requestAnimationFrame(scanQRCode);
+    }
+
+    function handleImageUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+                if (code) {
+                    resultText.textContent = `Résultat : ${code.data}`;
+                } else {
+                    resultText.textContent = "Aucun QR code détecté dans l'image";
+                }
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Activer la caméra uniquement lorsque l'utilisateur clique sur le bouton
+    activateCameraButton.addEventListener("click", () => {
+        startCamera();
+        activateCameraButton.hidden = true; // Cacher le bouton après activation
+    });
+
+    fileInput.addEventListener("change", handleImageUpload);
+  </script>
+</body>
+</html>

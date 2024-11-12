@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Générer QR Code</title>
+  <style>
+    /* Couleur de fond douce pour la page */
+    body {
+      background: #f4f6f9; /* Gris clair */
+      color: #333; /* Couleur de texte foncée pour une bonne lisibilité */
+    }
+
+    /* Fond personnalisé pour la section du formulaire */
+    .container {
+      background-color: #ffffff; /* Blanc pour la section formulaire */
+      border-radius: 8px; /* Coins arrondis */
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet flottant */
+    }
+
+    /* Titre principal avec une couleur d'accent */
+    h1 {
+      color: #007bff; /* Bleu pour le titre */
+    }
+
+    /* Boutons avec une couleur accentuée */
+    .btn-primary {
+      background-color: #007bff; /* Bleu accent */
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3; /* Bleu foncé au survol */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navbar" style="display: none;">
+    <div class="container">
+      <a class="navbar-brand fs-4 fw-bolder" href="#">QR Code</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="auth-links">
+          <li class="nav-item"><a class="nav-link" href="generer.html">Générer</a></li>
+          <li class="nav-item"><a class="nav-link" href="lecture.html">Lire QR Code</a></li>
+          <li class="nav-item"><a class="nav-link" href="historique.html">Gestion QR Code</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="accueil.html">Deconnexion</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Vérification de la connexion -->
+  <script>
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("navbar").style.display = "block";
+    }
+  </script>
+
+  <div class="container my-5">
+    <h1>Générer un code QR</h1>
+    <input type="text" class="info form-control mb-3" id="info" placeholder="Entrez une information">
+    <button type="submit" class="btn btn-primary" id="btnb">Générer</button>
+    <img src="#" alt="image du qr-code" class="qr-img mt-3" id="qr-img">
+
+    <!-- Script pour générer le QR code -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+      document.getElementById("btnb").addEventListener("click", function() {
+        const info = document.getElementById("info").value;
+
+        // Générer le QR code
+        if (info.trim() !== "") {
+          QRCode.toDataURL(info, function (err, url) {
+            if (err) {
+              console.error(err);
+              return;
+            }
+
+            // Afficher l'image du QR code
+            const qrImg = document.getElementById("qr-img");
+            qrImg.src = url;
+
+            // Sauvegarder le QR code dans le localStorage
+            let qrCodes = JSON.parse(localStorage.getItem("qrCodes")) || [];
+            qrCodes.push({ src: url, info: info });
+            localStorage.setItem("qrCodes", JSON.stringify(qrCodes));
+          });
+        }
+      });
+    </script>
+  </div>
+
+  <script src="code.js"></script>
+</body>
+</html>
