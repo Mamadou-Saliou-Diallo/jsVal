@@ -51,7 +51,7 @@
           <li class="nav-item"><a class="nav-link" href="lecture.html">Lire QR Code</a></li>
           <li class="nav-item"><a class="nav-link" href="historique.html">Gestion QR Code</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="accueil.html">Deconnexion</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html" id="logoutButton">Deconnexion</a></li>
         </ul>
       </div>
     </div>
@@ -64,6 +64,12 @@
     } else {
       document.getElementById("navbar").style.display = "block";
     }
+
+    // Logique de déconnexion
+    document.getElementById("logoutButton").addEventListener("click", function() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "index.html";
+    });
   </script>
 
   <div class="container my-5">

@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -160,6 +160,8 @@
 
     document.getElementById("loginForm").addEventListener("submit", function(event) {
       event.preventDefault();
+      // Enregistrer l'état de connexion
+      localStorage.setItem("isLoggedIn", "true"); 
       alert("Connexion réussie !");
       window.location.href = "generer.html";
     });
