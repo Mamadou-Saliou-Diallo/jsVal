@@ -158,18 +158,37 @@
       document.getElementById("register-form").style.display = "block";
     }
 
+    // Gestion de la soumission du formulaire de connexion
     document.getElementById("loginForm").addEventListener("submit", function(event) {
       event.preventDefault();
-      // Enregistrer l'état de connexion
-      localStorage.setItem("isLoggedIn", "true"); 
-      alert("Connexion réussie !");
-      window.location.href = "generer.html";
+      
+      const storedEmail = localStorage.getItem("userEmail");
+      const storedPassword = localStorage.getItem("userPassword");
+      const enteredEmail = document.getElementById("loginEmail").value;
+      const enteredPassword = document.getElementById("loginPassword").value;
+
+      if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
+        localStorage.setItem("isLoggedIn", "true"); // Marque l'utilisateur comme connecté
+        alert("Connexion réussie !");
+        window.location.href = "generer.html"; // Redirige vers la page de génération de QR Code
+      } else {
+        alert("E-mail ou mot de passe incorrect.");
+      }
     });
 
+    // Gestion de la soumission du formulaire d'inscription
     document.getElementById("registerForm").addEventListener("submit", function(event) {
       event.preventDefault();
+
+      const email = document.getElementById("registerEmail").value;
+      const password = document.getElementById("registerPassword").value;
+
+      // Stockage des informations de l'utilisateur dans localStorage
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPassword", password);
+
       alert("Inscription réussie !");
-      window.location.href = "generer.html";
+      window.location.href = "index.html"; // Redirige l'utilisateur vers la page d'accueil (connexion)
     });
   </script>
 
