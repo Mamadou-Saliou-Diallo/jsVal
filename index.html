@@ -4,77 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Lien vers le fichier CSS -->
   <link rel="stylesheet" href="style.css">
   <title>Accueil - QR Code</title>
-  <style>
-    /* Couleur de fond avec un dégradé */
-    body {
-      background: linear-gradient(135deg, #0099ff, #66ccff);
-      font-family: 'Roboto', sans-serif;
-      color: #ffffff;
-    }
-
-    /* Style de la section principale */
-    #home {
-      background-color: rgba(0, 0, 0, 0.5); /* Fond sombre semi-transparent pour la lisibilité */
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    #home h1 {
-      font-size: 3rem;
-      font-weight: bolder;
-    }
-
-    #home p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    /* Style des boutons */
-    .btn {
-      font-size: 1.1rem;
-      padding: 12px 25px;
-      margin-top: 10px;
-      border-radius: 25px;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-primary {
-      background-color: #007bff;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background-color: #0056b3;
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      border: 2px solid #ffffff;
-      color: #ffffff;
-    }
-
-    .btn-secondary:hover {
-      background-color: #ffffff;
-      color: #007bff;
-    }
-
-    /* Style pour l'image */
-    .img-fluid {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Section de texte explicatif */
-    .mt-4 {
-      color: #ffffff;
-      font-size: 1.2rem;
-    }
-
-  </style>
 </head>
-<body>
+<body class="page-home"> <!-- Classe spécifique à la page pour éviter les conflits avec d'autres pages -->
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navbar">
@@ -146,52 +80,8 @@
     </form>
   </div>
 
-  <!-- JavaScript pour basculer entre les formulaires et gérer la connexion -->
-  <script>
-    function showLogin() {
-      document.getElementById("login-form").style.display = "block";
-      document.getElementById("register-form").style.display = "none";
-    }
-
-    function showRegister() {
-      document.getElementById("login-form").style.display = "none";
-      document.getElementById("register-form").style.display = "block";
-    }
-
-    // Gestion de la soumission du formulaire de connexion
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      
-      const storedEmail = localStorage.getItem("userEmail");
-      const storedPassword = localStorage.getItem("userPassword");
-      const enteredEmail = document.getElementById("loginEmail").value;
-      const enteredPassword = document.getElementById("loginPassword").value;
-
-      if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
-        localStorage.setItem("isLoggedIn", "true"); // Marque l'utilisateur comme connecté
-        alert("Connexion réussie !");
-        window.location.href = "generer.html"; // Redirige vers la page de génération de QR Code
-      } else {
-        alert("E-mail ou mot de passe incorrect.");
-      }
-    });
-
-    // Gestion de la soumission du formulaire d'inscription
-    document.getElementById("registerForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const email = document.getElementById("registerEmail").value;
-      const password = document.getElementById("registerPassword").value;
-
-      // Stockage des informations de l'utilisateur dans localStorage
-      localStorage.setItem("userEmail", email);
-      localStorage.setItem("userPassword", password);
-
-      alert("Inscription réussie !");
-      window.location.href = "index.html"; // Redirige l'utilisateur vers la page d'accueil (connexion)
-    });
-  </script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Lien vers le fichier JavaScript -->
+  <script src="code.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

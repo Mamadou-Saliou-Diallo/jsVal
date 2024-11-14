@@ -1,0 +1,210 @@
+/* Navbar avec un fond dégradé élégant */
+#navbar {
+    background: linear-gradient(45deg, #00aaff, #0066cc); /* Dégradé de bleu clair à bleu foncé */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ombre douce pour l'effet de profondeur */
+}
+
+#navbar .navbar-brand {
+    color: #0056b3;
+    font-size: 1.7rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#navbar .navbar-brand:hover {
+    color: #ffcc00; /* Accent doré pour le survol du logo */
+}
+
+/* Liens du menu avec une couleur gris foncé */
+#navbar .navbar-nav .nav-link {
+    color: #333333; /* Gris foncé pour les liens du menu */
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 10px 20px; /* Espacement des éléments */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Changer la couleur des liens sur hover */
+#navbar .navbar-nav .nav-link:hover,
+#navbar .navbar-nav .nav-link:focus {
+    background-color: #0056b3; /* Bleu foncé au survol */
+    color: #ffcc00; /* Couleur dorée au survol */
+    border-radius: 5px; /* Coins arrondis sur le survol */
+}
+
+/* Lien actif mis en avant */
+#navbar .navbar-nav .nav-item.active .nav-link {
+    color: #ffcc00; /* Texte doré pour l'élément actif */
+    background-color: transparent; /* Pas de fond coloré pour l'élément actif */
+    font-weight: 600; /* Poids de police plus fort pour l'élément actif */
+}
+
+/* Icône du menu burger */
+#navbar .navbar-toggler-icon {
+    background-color: white;
+}
+
+/* Pour les petits écrans, centrer le menu */
+@media (max-width: 768px) {
+    #navbar .navbar-collapse {
+        text-align: center; /* Centrer les liens pour les petits écrans */
+    }
+
+    #navbar .navbar-nav .nav-link {
+        padding: 10px 0; /* Espacement ajusté pour les petits écrans */
+    }
+}
+.navbar-nav .nav-link:hover {
+    color: #f0ad4e; /* Jaune/orange au survol */
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #f8b400; /* Couleur jaune/orange au survol */
+  }
+  
+  /* ------------------------------navbar lecture ------------------- */
+  
+/* Amélioration du survol des éléments de la navbar */
+.navbar-nav .nav-link {
+    transition: color 0.3s ease, transform 0.3s ease; /* Transition fluide pour le changement de couleur et l'effet de transformation */
+  }
+  
+  /* Changer la couleur de texte au survol */
+  .navbar-nav .nav-link:hover {
+    color: #ffcc00; /* Jaune doré au survol */
+    transform: translateY(-2px); /* Légère élévation de l'élément au survol */
+  }
+  
+  /* Ajouter une ombre au bas de la navbar pour un effet de profondeur */
+  #navbar {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  }
+  
+  /* Le logo de la navbar */
+  .navbar-brand:hover {
+    color: #ffcc00; /* Jaune doré au survol pour le logo aussi */
+  }
+  
+  /* Animation de la navbar pour que les liens s'affichent plus agréablement */
+  .navbar-nav {
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  /* Définir l'animation pour l'apparition du menu */
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(50px); /* Entrée depuis la droite */
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+    
+  
+
+/* --------------------------------------Style global pour toutes les pages------------------- */
+  /* ------------------------------------La page d'accueil-------------------------------- */
+/* Dégradé de fond */
+body {
+    background: linear-gradient(135deg, #0099ff, #66ccff);
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+  }
+  
+  /* Style spécifique à la page d'accueil */
+  .page-home #home {
+    background-color: rgba(0, 0, 0, 0.5); /* Fond sombre semi-transparent pour la lisibilité */
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .page-home #home h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+  }
+  
+  .page-home #home p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Style des boutons */
+  .page-home .btn {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    margin-top: 10px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .page-home .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .page-home .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .page-home .btn-secondary {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+  }
+  
+  .page-home .btn-secondary:hover {
+    background-color: #ffffff;
+    color: #007bff;
+  }
+  
+  /* Style pour l'image */
+  .page-home .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Section de texte explicatif */
+  .page-home .mt-4 {
+    color: #ffffff;
+    font-size: 1.2rem;
+  }
+
+  /* ----------------------------------------------la page generer----------------------------- */
+
+ /* Styles uniquement pour la page générer */
+body.generer-page {
+    background: #f4f6f9; /* Gris clair pour la page générer */
+    color: #333; /* Couleur de texte foncée pour une bonne lisibilité */
+  }
+  
+  body.generer-page .container {
+    background-color: #ffffff; /* Fond blanc pour la section formulaire */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet flottant */
+  }
+  
+  body.generer-page h1 {
+    color: #007bff; /* Bleu pour le titre */
+  }
+  
+  body.generer-page .btn-primary {
+    background-color: #007bff; /* Bleu accent */
+    border: none;
+  }
+  
+  body.generer-page .btn-primary:hover {
+    background-color: #0056b3; /* Bleu foncé au survol */
+  }
+  
+  body.generer-page .qr-img {
+    max-width: 100%; /* Limite la taille de l'image du QR code */
+  }
+   
+  /* -----------------------------------page lecture-------------------------------- */
+
+  
+  
+  

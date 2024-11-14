@@ -41,23 +41,39 @@
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar">
     <div class="container">
-      <a class="navbar-brand fs-4 fw-bolder" href="#">QR Code</a>
+      <!-- Logo de la navbar -->
+      <a class="navbar-brand fs-4 fw-bolder text-dark" href="#">QR Code</a>
+      
+      <!-- Toggler pour mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
+      <!-- Menu de navigation -->
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="auth-links">
-          <li class="nav-item"><a class="nav-link" href="generer.html">Générer</a></li>
-          <li class="nav-item"><a class="nav-link" href="lecture.html">Lire QR Code</a></li>
-          <li class="nav-item"><a class="nav-link" href="historique.html">Gestion QR Code</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html">Deconnexion</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="generer.html">Générer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="lecture.html">Lire QR Code</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="historique.html">Gestion QR Code</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="index.html">Deconnexion</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+  
 
   <script>
     if (localStorage.getItem("isLoggedIn") !== "true") {
