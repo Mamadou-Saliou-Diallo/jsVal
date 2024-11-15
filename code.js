@@ -1,34 +1,46 @@
-// Fonction pour afficher le formulaire de connexion
+// JavaScript pour basculer entre les formulaires et gérer la connexion
 function showLogin() {
-  document.getElementById("login-form").style.display = "block";  // Afficher le formulaire de connexion
-  document.getElementById("register-form").style.display = "none"; // Cacher le formulaire d'inscription
-}
-
-// Fonction pour afficher le formulaire d'inscription
-function showRegister() {
-  document.getElementById("login-form").style.display = "none";  // Cacher le formulaire de connexion
-  document.getElementById("register-form").style.display = "block"; // Afficher le formulaire d'inscription
-}
-
-// Gestion de la soumission du formulaire de connexion
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+    document.getElementById("login-form").style.display = "block";
+    document.getElementById("register-form").style.display = "none";
+  }
   
-  const storedEmail = localStorage.getItem("userEmail");
-  const storedPassword = localStorage.getItem("userPassword");
-  const enteredEmail = document.getElementById("loginEmail").value;
-  const enteredPassword = document.getElementById("loginPassword").value;
-
-  if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
-      localStorage.setItem("isLoggedIn", "true");
+  function showRegister() {
+    document.getElementById("login-form").style.display = "none";
+    document.getElementById("register-form").style.display = "block";
+  }
+  
+  // Gestion de la soumission du formulaire de connexion
+  document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    const storedEmail = localStorage.getItem("userEmail");
+    const storedPassword = localStorage.getItem("userPassword");
+    const enteredEmail = document.getElementById("loginEmail").value;
+    const enteredPassword = document.getElementById("loginPassword").value;
+  
+    if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
+      localStorage.setItem("isLoggedIn", "true"); // Marque l'utilisateur comme connecté
       alert("Connexion réussie !");
       window.location.href = "generer.html"; // Redirige vers la page de génération de QR Code
-  } else {
+    } else {
       alert("E-mail ou mot de passe incorrect.");
-  }
-});
-
-
+    }
+  });
+  
+  // Gestion de la soumission du formulaire d'inscription
+  document.getElementById("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+  
+    const email = document.getElementById("registerEmail").value;
+    const password = document.getElementById("registerPassword").value;
+  
+    // Stockage des informations de l'utilisateur dans localStorage
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", password);
+  
+    alert("Inscription réussie !");
+    window.location.href = "index.html"; // Redirige l'utilisateur vers la page d'accueil (connexion)
+  });
 
   // ---------------------------------------la page generer----------------------------------
 // Vérification de la connexion (si non connecté, rediriger vers la page d'accueil)

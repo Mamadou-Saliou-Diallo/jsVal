@@ -150,143 +150,70 @@
 
 /* --------------------------------------Style global pour toutes les pages------------------- */
   /* ------------------------------------La page d'accueil-------------------------------- */
-/* Dégradé de fond de la page */
+/* Dégradé de fond */
 body {
-  background: linear-gradient(135deg, #0099ff, #66ccff); /* Dégradé de fond */
-  font-family: 'Roboto', sans-serif;
-  color: #ffffff; /* Texte en blanc par défaut */
-  margin: 0;
-  padding: 0;
-}
-
-/* Style spécifique à la page d'accueil */
-.page-home #home {
-  background-color: rgba(0, 0, 0, 0.6); /* Fond sombre semi-transparent pour la lisibilité du texte */
-  padding: 60px 0;
-  text-align: center;
-}
-
-/* Titre principal */
-.page-home #home h1 {
-  font-size: 3rem;
-  font-weight: bolder;
-}
-
-/* Description principale */
-.page-home #home p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-/* Style des boutons */
-.page-home .btn {
-  font-size: 1.1rem;
-  padding: 12px 25px;
-  margin-top: 10px;
-  border-radius: 25px;
-  transition: background-color 0.3s ease;
-}
-
-/* Bouton principal */
-.page-home .btn-primary {
-  background-color: #007bff;
-  border: none;
-}
-
-.page-home .btn-primary:hover {
-  background-color: #0056b3;
-}
-
-/* Bouton secondaire */
-.page-home .btn-secondary {
-  background-color: transparent;
-  border: 2px solid #ffffff;
-  color: #ffffff;
-}
-
-.page-home .btn-secondary:hover {
-  background-color: #ffffff;
-  color: #007bff;
-}
-
-/* Formulaire */
-#login-form, #register-form {
-  display: none; /* Caché par défaut */
-  background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
-  padding: 30px;
-  border-radius: 10px;
-  width: 80%;
-  margin: 0 auto;
-  max-width: 400px;
-  color: #ffffff; /* Texte blanc pour les formulaires */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Formulaire actif */
-#login-form.active, #register-form.active {
-  display: block; /* Afficher les formulaires lorsqu'ils sont actifs */
-}
-
-/* Titre des formulaires */
-#login-form h2, #register-form h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-/* Style des labels */
-#login-form label, #register-form label {
-  font-size: 1.2rem;
-  color: #ffffff;
-}
-
-/* Style des champs de saisie */
-#login-form input, #register-form input {
-  background-color: rgba(0, 0, 0, 0.5); /* Fond sombre pour les champs de saisie */
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  font-size: 1rem;
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-
-/* Focus sur les champs de saisie */
-#login-form input:focus, #register-form input:focus {
-  outline: none;
-  border-color: #66ccff; /* Bordure bleue au focus */
-  background-color: rgba(0, 0, 0, 0.7); /* Plus sombre au focus */
-}
-
-/* Boutons du formulaire */
-#login-form button, #register-form button {
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  border-radius: 25px;
-  margin-top: 20px;
-}
-
-#login-form button:hover, #register-form button:hover {
-  background-color: #0056b3;
-}
-
-/* Section explicative */
-.page-home .mt-4 {
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-
-/* Styles généraux pour l'image explicative */
-.page-home .img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-
+    background: linear-gradient(135deg, #0099ff, #66ccff);
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+  }
+  
+  /* Style spécifique à la page d'accueil */
+  .page-home #home {
+    background-color: rgba(0, 0, 0, 0.5); /* Fond sombre semi-transparent pour la lisibilité */
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .page-home #home h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+  }
+  
+  .page-home #home p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Style des boutons */
+  .page-home .btn {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    margin-top: 10px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .page-home .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .page-home .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .page-home .btn-secondary {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+  }
+  
+  .page-home .btn-secondary:hover {
+    background-color: #ffffff;
+    color: #007bff;
+  }
+  
+  /* Style pour l'image */
+  .page-home .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Section de texte explicatif */
+  .page-home .mt-4 {
+    color: #ffffff;
+    font-size: 1.2rem;
+  }
 
   /* ----------------------------------------------la page generer----------------------------- */
 
