@@ -48,6 +48,24 @@ body {
 .text-warning:hover {
     color: #ffcc00;
 }
+/* Taille du texte du lien "Créer un compte" ajustée selon la taille de l'écran */
+#switchToRegister, #switchToLogin {
+  font-size: 4vw; /* Taille en fonction de la largeur de la fenêtre */
+  text-decoration: none;
+}
+
+#switchToRegister:hover, #switchToLogin:hover {
+  text-decoration: underline;
+}
+
+/* Pour les petits écrans, réduire encore la taille du texte */
+@media (max-width: 576px) {
+  #switchToRegister, #switchToLogin {
+    font-size: 5vw; /* Plus petit sur les petits écrans */
+  }
+}
+
+
 
 </style>
 <body>
@@ -61,42 +79,47 @@ body {
     <!-- Section du formulaire de connexion (droite) -->
     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center p-5">
       <div class="login-card p-4 shadow" style="width: 100%; max-width: 400px;">
-        <h2 class="text-center mb-4 text-dark" id="formTitle">Connexion</h2>
         <!-- Formulaire de Connexion -->
-        <form id="loginForm">
-          <div class="mb-3">
-            <label for="loginEmail" class="form-label text-dark">Adresse Email</label>
-            <input type="email" class="form-control" id="loginEmail" placeholder="Entrez votre email" required>
-          </div>
-          <div class="mb-3">
-            <label for="loginPassword" class="form-label text-dark">Mot de Passe</label>
-            <input type="password" class="form-control" id="loginPassword" placeholder="Entrez votre mot de passe" required>
-          </div>
-          <button type="submit" class="btn btn-primary w-100">Se connecter</button>
-          <p class="text-center mt-3 text-dark">
-            Pas encore inscrit ? <a href="#" id="switchToRegister" class="text-decoration-none text-warning">Créer un compte</a>
-          </p>
-        </form>
+        <div id="login-form">
+          <h2 class="text-center mb-4 text-dark" id="formTitle">Connexion</h2>
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label text-dark">Adresse Email</label>
+              <input type="email" class="form-control" id="loginEmail" placeholder="Entrez votre email" required>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label text-dark">Mot de Passe</label>
+              <input type="password" class="form-control" id="loginPassword" placeholder="Entrez votre mot de passe" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+            <p class="text-center mt-3 text-dark">
+              Pas encore inscrit ? <a href="#" id="switchToRegister" class="text-decoration-none text-warning">Créer un compte</a>
+            </p>
+          </form>
+        </div>
 
         <!-- Formulaire d'Inscription -->
-        <form id="registerForm" style="display: none;">
-          <div class="mb-3">
-            <label for="registerName" class="form-label text-dark">Nom</label>
-            <input type="text" class="form-control" id="registerName" placeholder="Entrez votre nom" required>
-          </div>
-          <div class="mb-3">
-            <label for="registerEmail" class="form-label text-dark">Adresse Email</label>
-            <input type="email" class="form-control" id="registerEmail" placeholder="Entrez votre email" required>
-          </div>
-          <div class="mb-3">
-            <label for="registerPassword" class="form-label text-dark">Mot de Passe</label>
-            <input type="password" class="form-control" id="registerPassword" placeholder="Créez un mot de passe" required>
-          </div>
-          <button type="submit" class="btn btn-secondary w-100">S'inscrire</button>
-          <p class="text-center mt-3 text-dark">
-            Déjà inscrit ? <a href="#" id="switchToLogin" class="text-decoration-none text-warning">Se connecter</a>
-          </p>
-        </form>
+        <div id="register-form" style="display: none;">
+          <h2 class="text-center mb-4 text-dark">Inscription</h2>
+          <form id="registerForm">
+            <div class="mb-3">
+              <label for="registerName" class="form-label text-dark">Nom</label>
+              <input type="text" class="form-control" id="registerName" placeholder="Entrez votre nom" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label text-dark">Adresse Email</label>
+              <input type="email" class="form-control" id="registerEmail" placeholder="Entrez votre email" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label text-dark">Mot de Passe</label>
+              <input type="password" class="form-control" id="registerPassword" placeholder="Créez un mot de passe" required>
+            </div>
+            <button type="submit" class="btn btn-secondary w-100">S'inscrire</button>
+            <p class="text-center mt-3 text-dark">
+              Déjà inscrit ? <a href="#" id="switchToLogin" class="text-decoration-none text-warning">Se connecter</a>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   </div>
