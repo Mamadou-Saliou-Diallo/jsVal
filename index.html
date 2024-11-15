@@ -49,22 +49,30 @@ body {
     color: #ffcc00;
 }
 
-
 </style>
 <body>
-  <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center min-vh-100">
-    <!-- Section du titre (gauche) -->
-    <div class="col-12 col-md-6 p-5 text-light" style="background: linear-gradient(135deg, #0099ff, #66ccff);">
-      <h1 class="display-4">Générez et lisez des QR Codes facilement</h1>
-      <p class="lead">Notre site vous permet de créer, lire et partager des QR Codes en toute simplicité.</p>
-    </div>
-
-    <!-- Section du formulaire de connexion (droite) -->
-    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center p-5">
-      <div class="login-card p-4 shadow" style="width: 100%; max-width: 400px;">
-        <!-- Formulaire de Connexion -->
-        <div id="login-form">
-          <h2 class="text-center mb-4 text-dark" id="formTitle">Connexion</h2>
+  <!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="login-style.css">
+    <title>Connexion - QR Code</title>
+  </head>
+  <body>
+    <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center min-vh-100">
+      <!-- Section du titre (gauche) -->
+      <div class="col-12 col-md-6 p-5 text-light" style="background: linear-gradient(135deg, #0099ff, #66ccff);">
+        <h1 class="display-4">Générez et lisez des QR Codes facilement</h1>
+        <p class="lead">Notre site vous permet de créer, lire et partager des QR Codes en toute simplicité.</p>
+      </div>
+  
+      <!-- Section du formulaire de connexion (droite) -->
+      <div class="col-12 col-md-6 d-flex justify-content-center align-items-center p-5">
+        <div class="login-card p-4 shadow" style="width: 100%; max-width: 400px;">
+          <h2 class="text-center mb-4 text-white" id="formTitle">Connexion</h2>
+          <!-- Formulaire de Connexion -->
           <form id="loginForm">
             <div class="mb-3">
               <label for="loginEmail" class="form-label text-dark">Adresse Email</label>
@@ -79,12 +87,9 @@ body {
               Pas encore inscrit ? <a href="#" id="switchToRegister" class="text-decoration-none text-warning">Créer un compte</a>
             </p>
           </form>
-        </div>
-
-        <!-- Formulaire d'Inscription -->
-        <div id="register-form" style="display: none;">
-          <h2 class="text-center mb-4 text-dark">Inscription</h2>
-          <form id="registerForm">
+  
+          <!-- Formulaire d'Inscription -->
+          <form id="registerForm" style="display: none;">
             <div class="mb-3">
               <label for="registerName" class="form-label text-dark">Nom</label>
               <input type="text" class="form-control" id="registerName" placeholder="Entrez votre nom" required>
@@ -105,7 +110,13 @@ body {
         </div>
       </div>
     </div>
-  </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="login.js"></script>
+  </body>
+  </html>
+  
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script> 
 // Changement entre les formulaires
